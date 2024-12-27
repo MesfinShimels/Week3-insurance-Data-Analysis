@@ -1,0 +1,50 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/preprocess.py --input Data/Data.csv --output Data/processed_Data.csv
+    deps:
+    - path: Data/Data.csv
+      hash: md5
+      md5: 7fdc20ae3ef4d96b337320a8edfbf549
+      size: 528314088
+    - path: src/preprocess.py
+      hash: md5
+      md5: 4e15f96bfa145c8da191dbc4005b77d8
+      size: 921
+    outs:
+    - path: Data/processed_Data.csv
+      hash: md5
+      md5: 39bbedd9fab935cd8946c8a1777211e4
+      size: 11185643207
+  clean:
+    cmd: python src/clean_data.py --input Data/processed_Data.csv --output Data/cleaned_Data.csv
+    deps:
+    - path: Data/processed_Data.csv
+      hash: md5
+      md5: 39bbedd9fab935cd8946c8a1777211e4
+      size: 11185643207
+    - path: src/clean_data.py
+      hash: md5
+      md5: c652541279786d0dfe53ae9fb848e844
+      size: 761
+    outs:
+    - path: Data/cleaned_Data.csv
+      hash: md5
+      md5: 90ccc35fcdd91038575bbd4142ba3a9d
+      size: 11185643492
+  remove_outliers:
+    cmd: python src/remove_outliers.py --input Data/cleaned_Data.csv --output Data/final_Data.csv
+    deps:
+    - path: Data/cleaned_Data.csv
+      hash: md5
+      md5: 90ccc35fcdd91038575bbd4142ba3a9d
+      size: 11185643492
+    - path: src/remove_outliers.py
+      hash: md5
+      md5: 45c7102546768b093312d73ca6623976
+      size: 879
+    outs:
+    - path: Data/final_Data.csv
+      hash: md5
+      md5: ad4b6bb9e0e711b628e4a29824e4be5a
+      size: 49844
