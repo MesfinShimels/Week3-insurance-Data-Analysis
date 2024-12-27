@@ -1,0 +1,15 @@
+{
+    "python.pythonPath": "path/to/your/virtualenv/bin/python",  // Adjust Python path
+    "python.linting.enabled": true,  // Enable linting to check Python code quality
+    "python.linting.pylintEnabled": true,  // Enable Pylint for linting
+    "python.testing.pytestEnabled": true,  // Enable Pytest for unit tests
+    "python.testing.unittestEnabled": false,  // Disable unittest if you are using pytest
+    "python.autoComplete.addBrackets": true,  // Enable auto-completion of brackets
+    "python.formatting.autopep8Path": "path/to/autopep8",  // Set autopep8 path if required
+    "python.formatting.blackPath": "path/to/black",  // Set Black formatter if required
+    "files.autoSave": "afterDelay",  // Enable auto-save for files
+    "files.autoSaveDelay": 1000,  // Set auto-save delay (in ms)
+    "files.eol": "\n",  // Set end of line character
+    "editor.tabSize": 4,  // Set tab size for code indentation
+    "editor.insertSpaces": true  // Use spaces instead of tabs for indentation
+}
