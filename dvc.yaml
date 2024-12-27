@@ -1,0 +1,24 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py --input Data/Data.csv --output Data/processed_Data.csv
+    deps:
+      - src/preprocess.py
+      - Data/Data.csv
+    outs:
+      - Data/processed_Data.csv
+
+  clean:
+    cmd: python src/clean_data.py --input Data/processed_Data.csv --output Data/cleaned_Data.csv
+    deps:
+      - src/clean_data.py
+      - Data/processed_Data.csv
+    outs:
+      - Data/cleaned_Data.csv
+
+  remove_outliers:
+    cmd: python src/remove_outliers.py --input Data/cleaned_Data.csv --output Data/final_Data.csv
+    deps:
+      - src/remove_outliers.py
+      - Data/cleaned_Data.csv
+    outs:
+      - Data/final_Data.csv
