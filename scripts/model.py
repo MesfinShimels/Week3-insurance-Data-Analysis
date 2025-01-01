@@ -29,20 +29,7 @@ def preprocess_data(data):
     
     return data
 
-# Data Preparation
-# def preprocess_data(data):
-#     """
-#     Preprocess the data by handling missing values, encoding, and feature engineering.
-#     """
-#     # Handle missing values
-#     data.fillna(data.mean(), inplace=True)
-#     data = data.fillna("Unknown")
-    
-#     # Encoding categorical columns
-#     categorical_columns = data.select_dtypes(include=['object']).columns
-#     data = pd.get_dummies(data, columns=categorical_columns, drop_first=True)
-    
-#     return data
+
 
 # Train-Test Split
 from sklearn.model_selection import train_test_split
