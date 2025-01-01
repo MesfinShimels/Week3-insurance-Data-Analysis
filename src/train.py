@@ -59,3 +59,27 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     train_model(args.input, args.output)
+import pandas as pd
+
+def missing_value(df):
+    # Calculate the number of missing values for each column
+    missing_values = df.isnull().sum()
+    total_entries = len(df)  # Total number of rows in the DataFrame
+    missing_percentage = (missing_values / total_entries) * 100  # Calculate the percentage of missing values
+
+    # Combine missing value count and percentage into a DataFrame for better readability
+    missing_data = pd.DataFrame({
+        'Missing Values': missing_values,
+        'Missing Percentage': missing_percentage,
+    })
+
+    # Sort by the number of missing values (optional)
+    missing_data_sorted = missing_data.sort_values(by='Missing Values', ascending=False)
+    
+    # Identify columns with missing percentage greater than 60%
+    columns_to_drop = missing_data[missing_data['Missing Percentage'] > 60].index.tolist()
+    
+    # Drop those columns from the DataFrame
+    cleaned_df = df.drop(columns=columns_to_drop)
+    
+    return cleaned_df, columns_to_drop
